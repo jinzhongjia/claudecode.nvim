@@ -262,7 +262,7 @@ function M.start_ping_timer(server, interval)
           client_manager.send_ping(client, "ping")
         else
           -- Client appears dead, close it
-          server.on_error("Client " .. client.id .. " appears dead, closing")
+          server.on_message("Client " .. client.id .. " disconnected (timeout)")
           client_manager.close_client(client, 1006, "Connection timeout")
           M._remove_client(server, client)
         end
